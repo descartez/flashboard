@@ -1,13 +1,12 @@
 <!doctype html>
 <html>
   <head>
-    <title>Welcome!</title>
+    <title><%= @place_name %></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/public/stylesheets/app.css">
   </head>
   <body>
     <div class="container">
-      <h1>Welcome</h1>
       <%= yield %>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
