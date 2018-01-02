@@ -1,11 +1,12 @@
-require 'sinatra'
+require 'sinatra/base'
+require 'erb'
 
 class App < Sinatra::Base
   get '/' do
-    p 'hello'
+    erb :index
   end
 
   get '/edit' do
-    p 'edit'
+    erb :edit
   end
 end
