@@ -15,8 +15,10 @@ class App < Sinatra::Base
   end
 
   get '/edit' do
-    @slides = [1,2,3]
-    @announcements = [1,2,3]
     erb :edit
+  end
+
+  put '/edit' do
+    p params
   end
 end
