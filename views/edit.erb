@@ -1,17 +1,17 @@
 <h2>Edit Board</h2>
-<form method="PUT" action="/edit">
-  <div class="form-group">
+<div class="form-group">
+<form method="POST" action="/update">
     <label for="placeName">Place Name</label>
-    <input type="text" class="form-control" id="placeName"  placeholder="<%= @place_name %>">
+    <input name="place_name" type="text" class="form-control" id="placeName"  placeholder="<%= @place_name %>">
     <label for="placeLead">Place Lead</label>
-    <input type="text" class="form-control" id="placeLead"  placeholder="<%= @lead %>">
+    <input name="place_lead" type="text" class="form-control" id="placeLead"  placeholder="<%= @lead %>">
     <label for="announcementArea">Announcements</label>
     <small id="announcementArea" class="form-text text-muted">Please separate announcements with a dash and a new line.</small>
-    <textarea class="form-control" id="announcementArea" rows="4">
+    <textarea name="announcements" class="form-control" id="announcementArea" rows="4">
 <% @announcements.each do |announcement| %>
 - <%= announcement %>
 <% end %>
     </textarea>
   <button type="submit" class="btn btn-primary">Save Changes</button>
-  </div>
 </form>
+</div>
