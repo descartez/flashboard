@@ -5,8 +5,7 @@ class App < Sinatra::Base
   before do
     @board_config = YAML::load_file('board_config.yaml')
     @place_name = @board_config['place_name']
-    @intro_message = @board_config['place_lead']
-    @lead = @board_config['lead']
+    @intro_message = @board_config['intro_message']
     @announcements = @board_config['announcements']
   end
 
@@ -19,8 +18,16 @@ class App < Sinatra::Base
   end
 
   post '/update' do
+    p params[:announcements].split("-")
     @board_config['place_name'] = params[:place_name]
-    @board_config['place_lead'] = params[:place_lead]
+    @board_config['intro_message'] = params[:intro_message]
+
+    @board_config['announcements'] = params[:announcements].split("-")
+    @board_config['announcements'].each do |announcement|
+      announcement.strip!
+      announcement.sub(/\n/,"")
+    end
+
     File.open('board_config.yaml', 'w') {|f| f.write @board_config.to_yaml }
 
     redirect '/'
