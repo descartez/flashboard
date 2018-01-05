@@ -17,6 +17,10 @@ class App < Sinatra::Base
     erb :edit
   end
 
+  get '/upload' do
+    erb :upload
+  end
+
   post '/update' do
     unless params[:place_name].strip.empty?
       @board_config['place_name'] = params[:place_name].to_s
