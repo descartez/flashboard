@@ -7,11 +7,7 @@
     <input name="intro_message" type="text" class="form-control" id="placeLead"  placeholder="<%= @lead %>">
     <label for="announcementArea">Announcements</label>
     <small id="announcementArea" class="form-text text-muted">Please separate announcements with a dash and a new line.</small>
-    <textarea name="announcements" class="form-control" id="announcementArea" rows="4">
-<% @announcements.each do |announcement| %>
-- <%= announcement %>
-<% end %>
-    </textarea>
+    <textarea name="announcements" class="form-control" id="announcementArea" rows="4"><% @announcements.each do |announcement| %>- <%= announcement %><% end %></textarea>
   <button type="submit" class="btn btn-primary">Save Changes</button>
 </form>
 </div>

@@ -18,11 +18,10 @@ class App < Sinatra::Base
   end
 
   post '/update' do
-    p params[:announcements].split("-")
+    p params
     @board_config['place_name'] = params[:place_name]
     @board_config['intro_message'] = params[:intro_message]
-
-    @board_config['announcements'] = params[:announcements].split("-")
+    @board_config['announcements'] = params[:announcements].split("-").reject {|element| element.empty? }
     @board_config['announcements'].each do |announcement|
       announcement.strip!
       announcement.sub(/\n/,"")
