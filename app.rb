@@ -18,9 +18,13 @@ class App < Sinatra::Base
   end
 
   post '/update' do
-    p params
-    @board_config['place_name'] = params[:place_name]
-    @board_config['intro_message'] = params[:intro_message]
+    unless params[:place_name].strip.empty?
+      @board_config['place_name'] = params[:place_name].to_s
+    end
+    unless params[:intro_message].strip.empty?
+      @board_config['intro_message'] = params[:intro_message].to_s
+    end
+
     @board_config['announcements'] = params[:announcements].split("-").reject {|element| element.empty? }
     @board_config['announcements'].each do |announcement|
       announcement.strip!
