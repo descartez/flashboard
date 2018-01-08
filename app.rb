@@ -4,7 +4,7 @@ require 'JSON'
 
 class App < Sinatra::Base
   before do
-    file = File.read('board_config.json')
+    file = File.read('public/board_config.json')
     @board_config = JSON.parse(file)
     @place_name = @board_config['place_name']
     @intro_message = @board_config['intro_message']
@@ -37,7 +37,7 @@ class App < Sinatra::Base
       announcement.sub(/\n/,"")
     end
 
-    File.open('board_config.json', 'w') {|f| f.write @board_config.to_json }
+    File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
 
     redirect '/'
   end

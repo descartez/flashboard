@@ -1,7 +1,3 @@
-function load() {
-
-}
-
 function onYouTubeIframeAPIReady() {
   console.log('loaded and launched youtube script')
   var player;
