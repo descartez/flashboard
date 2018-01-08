@@ -1,9 +1,11 @@
 require 'sinatra/base'
 require 'yaml'
+require 'JSON'
 
 class App < Sinatra::Base
   before do
-    @board_config = YAML::load_file('board_config.yaml')
+    file = File.read('board_config.json')
+    @board_config = JSON.parse(file)
     @place_name = @board_config['place_name']
     @intro_message = @board_config['intro_message']
     @announcements = @board_config['announcements']
@@ -35,7 +37,7 @@ class App < Sinatra::Base
       announcement.sub(/\n/,"")
     end
 
-    File.open('board_config.yaml', 'w') {|f| f.write @board_config.to_yaml }
+    File.open('board_config.json', 'w') {|f| f.write @board_config.to_json }
 
     redirect '/'
   end

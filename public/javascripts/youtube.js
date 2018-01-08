@@ -1,3 +1,7 @@
+function load() {
+
+}
+
 function onYouTubeIframeAPIReady() {
   console.log('loaded and launched youtube script')
   var player;
@@ -7,7 +11,7 @@ function onYouTubeIframeAPIReady() {
     height: 316,
     playerVars: {
       autoplay: 1,
-      controls: 1,
+      controls: 0,
       showinfo: 0,
       modestbranding: 1,
       loop: 1,
