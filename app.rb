@@ -31,6 +31,17 @@ class App < Sinatra::Base
     erb :upload
   end
 
+  post '/upload' do
+    p @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+
+    File.open("./public/images/#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end
+
+    redirect '/upload'
+  end
+
   post '/update' do
     unless params[:place_name].strip.empty?
       @board_config['place_name'] = params[:place_name].to_s

@@ -2,10 +2,11 @@
   <a href="/upload">upload</a> / <a href="/edit">edit</a>
 </div>
 <h2>Manage Uploads</h2>
-<form>
+<form method='POST' action='/upload' enctype="multipart/form-data">
   <div class="form-group">
-    <label for="inputFile">Input File</label>
-    <input type="file" class="form-control-file" id="inputFile">
+    <label for="inputFile">Choose Image</label>
+    <input type="file" class="form-control-file" id="inputFile" name='file'>
+    <input class='btn btn-default' type="submit" value="Upload Image">
   </div>
 </form>
 <h3>Images</h3>
