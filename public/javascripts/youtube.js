@@ -7,7 +7,7 @@ function onYouTubeIframeAPIReady() {
     height: 316,
     playerVars: {
       autoplay: 1,
-      controls: 0,
+      controls: 1,
       showinfo: 0,
       modestbranding: 1,
       loop: 1,

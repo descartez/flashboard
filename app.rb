@@ -20,6 +20,14 @@ class App < Sinatra::Base
   end
 
   get '/upload' do
+    @images = []
+    Dir.open './public/images/' do |files|
+      files.each_with_index do |f,index|
+        if index > 1
+          @images << f
+        end
+      end
+    end
     erb :upload
   end
 

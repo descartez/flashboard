@@ -1,1 +1,19 @@
+<div>
+  <a href="/upload">upload</a> / <a href="/edit">edit</a>
+</div>
 <h2>Manage Uploads</h2>
+<form>
+  <div class="form-group">
+    <label for="inputFile">Input File</label>
+    <input type="file" class="form-control-file" id="inputFile">
+  </div>
+</form>
+<h3>Images</h3>
+<div class='row'>
+  <% @images.each do |img| %>
+    <div class="col-md-3">
+      <img class='col-md-12' src="images/<%= img %>">
+      <p><%= img %></p>
+    </div>
+  <% end %>
+</div>

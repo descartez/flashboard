@@ -1,17 +1,19 @@
-<div class="jumbotron">
-  <h1><%= @intro_message %></h1>
-  <p class="lead"><%= @lead %></p>
-</div>
-<div class='col-md-6' id='assets'>
-  <div id='youtube_video'></div>
-</div>
-<div class='col-md-6' id='announcements'>
-  <h1>Announcements</h1>
-  <ul>
-  <% @announcements.each do |announcement| %>
-    <li>
-      <p><%= announcement %><p>
-    </li>
-  <% end %>
-  </ul>
-</div>
+    <script async src="https://www.youtube.com/iframe_api"></script>
+    <script src="javascripts/youtube.js"></script>
+    <div class="jumbotron">
+      <h1><%= @intro_message %></h1>
+      <p class="lead"><%= @lead %></p>
+    </div>
+    <div class='col-md-6' id='assets'>
+      <div id='youtube_video'></div>
+    </div>
+    <div class='col-md-6' id='announcements'>
+      <h1>Announcements</h1>
+      <ul>
+        <% @announcements.each do |announcement| %>
+        <li>
+          <p><%= announcement %><p>
+          </li>
+          <% end %>
+        </ul>
+      </div>
