@@ -1,14 +1,30 @@
 require 'sinatra/base'
-require 'yaml'
 require 'JSON'
+require 'socket'
+
 
 class App < Sinatra::Base
+  set :bind, '0.0.0.0'
+  set :port, 9393
+
   before do
+    @ip_address = "#{Socket.ip_address_list[4].ip_address}::9393"
+
     file = File.read('public/board_config.json')
     @board_config = JSON.parse(file)
     @place_name = @board_config['place_name']
-    @intro_message = @board_config['intro_message']
+    @intro_message_header = @board_config['intro_message_header']
+    @intro_message_lead = @board_config['intro_message_lead']
     @announcements = @board_config['announcements']
+
+    @images = []
+    Dir.open './public/images/' do |files|
+      files.each_with_index do |f,index|
+        if index > 1
+          @images << f
+        end
+      end
+    end
   end
 
   get '/' do
@@ -20,22 +36,25 @@ class App < Sinatra::Base
   end
 
   get '/upload' do
-    @images = []
-    Dir.open './public/images/' do |files|
-      files.each_with_index do |f,index|
-        if index > 1
-          @images << f
-        end
-      end
-    end
     erb :upload
   end
 
   post '/upload' do
-    p @filename = params[:file][:filename]
+    @filename = params[:file][:filename]
     file = params[:file][:tempfile]
 
     File.open("./public/images/#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end
+
+    redirect '/upload'
+  end
+
+  post '/upload_logo' do
+    p extension = params[:file][:filename][/[^.]+$/]
+    file = params[:file][:tempfile]
+
+    File.open("./public/images/logo", 'wb') do |f|
       f.write(file.read)
     end
 
@@ -46,8 +65,11 @@ class App < Sinatra::Base
     unless params[:place_name].strip.empty?
       @board_config['place_name'] = params[:place_name].to_s
     end
-    unless params[:intro_message].strip.empty?
-      @board_config['intro_message'] = params[:intro_message].to_s
+    unless params[:intro_message_header].strip.empty?
+      @board_config['intro_message'] = params[:intro_message_header].to_s
+    end
+    unless params[:intro_message_lead].strip.empty?
+      @board_config['intro_message'] = params[:intro_message_lead].to_s
     end
 
     @board_config['announcements'] = params[:announcements].split("-").reject {|element| element.empty? }

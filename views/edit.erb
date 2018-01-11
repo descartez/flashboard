@@ -1,13 +1,12 @@
-<div>
-  <a href="/upload">upload</a> / <a href="/edit">edit</a>
-</div>
 <h2>Edit Board</h2>
 <div class="form-group">
 <form method="POST" action="/update">
     <label for="placeName">Place Name</label>
     <input name="place_name" type="text" class="form-control" id="placeName"  placeholder="<%= @place_name %>">
-    <label for="placeLead">Place Lead</label>
-    <input name="intro_message" type="text" class="form-control" id="placeLead"  placeholder="<%= @intro_message %>">
+    <label for="placeHeader">Intro Message Header</label>
+    <input name="intro_message_header" type="text" class="form-control" id="placeHeader"  placeholder="<%= @intro_message %>">
+    <label for="placeLead">Intro Message Lead</label>
+    <input name="intro_message_lead" type="text" class="form-control" id="placeLead"  placeholder="<%= @intro_message_lead %>">
     <label for="announcementArea">Announcements</label>
     <small id="announcementArea" class="form-text text-muted">Please separate announcements with a dash and a new line.</small>
     <textarea name="announcements" class="form-control" id="announcementArea" rows="4">
@@ -15,7 +14,8 @@
 - <%= announcement %>
 <% end %>
     </textarea>
-    <input name="youtube_link" type="text" class="form-control" id="placeLead"  placeholder="<%= @youtube_link %>">
+    <label for="youtubeLink">Youtube Link</label>
+    <input name="youtube_link" type="text" class="form-control" id="youtubeLink"  placeholder="<%= @youtube_link %>">
   <button type="submit" class="btn btn-primary">Save Changes</button>
 </form>
 </div>
