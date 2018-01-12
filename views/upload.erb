@@ -6,19 +6,3 @@
     <input class='btn btn-default' type="submit" value="Upload Image">
   </div>
 </form>
-<form method='POST' action='/upload' enctype="multipart/form-data">
-  <div class="form-group">
-    <label for="inputFile">Choose Image</label>
-    <input type="file" class="form-control-file" id="inputFile" name='file'>
-    <input class='btn btn-default' type="submit" value="Upload Image">
-  </div>
-</form>
-<h3>Images</h3>
-<div class='row'>
-  <% @images.each do |img| %>
-    <div class="col-md-3">
-      <img class='col-md-12' src="images/<%= img %>">
-      <p><%= img %></p>
-    </div>
-  <% end %>
-</div>

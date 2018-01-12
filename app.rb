@@ -66,10 +66,14 @@ class App < Sinatra::Base
       @board_config['place_name'] = params[:place_name].to_s
     end
     unless params[:intro_message_header].strip.empty?
-      @board_config['intro_message'] = params[:intro_message_header].to_s
+      @board_config['intro_message_header'] = params[:intro_message_header].to_s
     end
     unless params[:intro_message_lead].strip.empty?
-      @board_config['intro_message'] = params[:intro_message_lead].to_s
+      @board_config['intro_message_lead'] = params[:intro_message_lead].to_s
+    end
+
+    unless params[:youtube_id].strip.empty?
+      @board_config['youtube_id'] = params[:youtube_id][/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/, 1].to_s
     end
 
     @board_config['announcements'] = params[:announcements].split("-").reject {|element| element.empty? }
