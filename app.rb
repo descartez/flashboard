@@ -51,7 +51,7 @@ class App < Sinatra::Base
   end
 
   post '/upload_logo' do
-    p extension = params[:file][:filename][/[^.]+$/]
+    extension = params[:file][:filename][/[^.]+$/]
     file = params[:file][:tempfile]
 
     File.open("./public/images/logo", 'wb') do |f|
