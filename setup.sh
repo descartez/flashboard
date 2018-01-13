@@ -36,6 +36,7 @@ then
 else
   echo 'Did not find bundler!'
   echo 'to install: `gem install bundler`'
+  exit 1
 fi
 
 
