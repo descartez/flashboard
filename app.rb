@@ -16,15 +16,6 @@ class App < Sinatra::Base
     @intro_message_header = @board_config['intro_message_header']
     @intro_message_lead = @board_config['intro_message_lead']
     @announcements = @board_config['announcements']
-
-    @images = []
-    Dir.open './public/images/' do |files|
-      files.each_with_index do |f,index|
-        if index > 1
-          @images << f
-        end
-      end
-    end
   end
 
   get '/' do
