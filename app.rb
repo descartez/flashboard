@@ -35,7 +35,31 @@ class App < Sinatra::Base
   #----------------------------------
 
   get '/setup' do
-    'setup'
+    if !!@board_config['password_string']
+      erb :new_password
+    else
+      erb :setup
+    end
+  end
+
+  post '/setup' do
+    if params['password'] == params['password_confirmation']
+      @board_config['password_string'] = params['password']
+
+      File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
+
+      redirect '/edit'
+    else
+      redirect '/setup'
+    end
+  end
+
+  get '/auth' do
+    if !@board_config['password_string']
+      redirect '/setup'
+    else
+      'auth'
+    end
   end
 
   #----------------------------------
@@ -44,6 +68,32 @@ class App < Sinatra::Base
 
   get '/edit' do
     erb :edit
+  end
+
+  post '/update' do
+    unless params[:place_name].strip.empty?
+      @board_config['place_name'] = params[:place_name].to_s
+    end
+    unless params[:intro_message_header].strip.empty?
+      @board_config['intro_message_header'] = params[:intro_message_header].to_s
+    end
+    unless params[:intro_message_lead].strip.empty?
+      @board_config['intro_message_lead'] = params[:intro_message_lead].to_s
+    end
+
+    unless params[:youtube_id].strip.empty?
+      @board_config['youtube_id'] = params[:youtube_id][/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/, 1].to_s
+    end
+
+    @board_config['announcements'] = params[:announcements].split("-").reject {|element| element.empty? }
+    @board_config['announcements'].each do |announcement|
+      announcement.strip!
+      announcement.sub(/\n/,"")
+    end
+
+    File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
+
+    redirect '/edit'
   end
 
   #----------------------------------
@@ -76,30 +126,6 @@ class App < Sinatra::Base
     redirect '/upload'
   end
 
-  post '/update' do
-    unless params[:place_name].strip.empty?
-      @board_config['place_name'] = params[:place_name].to_s
-    end
-    unless params[:intro_message_header].strip.empty?
-      @board_config['intro_message_header'] = params[:intro_message_header].to_s
-    end
-    unless params[:intro_message_lead].strip.empty?
-      @board_config['intro_message_lead'] = params[:intro_message_lead].to_s
-    end
 
-    unless params[:youtube_id].strip.empty?
-      @board_config['youtube_id'] = params[:youtube_id][/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/, 1].to_s
-    end
-
-    @board_config['announcements'] = params[:announcements].split("-").reject {|element| element.empty? }
-    @board_config['announcements'].each do |announcement|
-      announcement.strip!
-      announcement.sub(/\n/,"")
-    end
-
-    File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
-
-    redirect '/edit'
-  end
 
 end

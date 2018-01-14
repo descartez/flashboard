@@ -1,1 +1,13 @@
 <h2>Setup</h2>
+<p>You need a password before you can edit!</p>
+<p>Make sure you remember this password, as resetting it will be a pain.</p>
+
+<div class="form-group">
+  <form method="POST" action="/setup">
+  <label for="password">Password:</label>
+  <input name="password" type="password" class="form-control" id="password">
+  <label for="password_confirmation">Password confirmation:</label>
+  <input name="password_confirmation" type="password" class="form-control" id="password_confirmation">
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
