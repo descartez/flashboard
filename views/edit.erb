@@ -1,11 +1,13 @@
 <p>edit / <a href="/upload">upload</a></p>
 <h2>Edit Board</h2>
+<div class='row'>
+<div class='col-md-6'>
 <div class="form-group">
 <form method="POST" action="/update">
     <label for="placeName">Place Name</label>
     <input name="place_name" type="text" class="form-control" id="placeName"  placeholder="<%= @place_name %>">
     <label for="placeHeader">Intro Message Header</label>
-    <input name="intro_message_header" type="text" class="form-control" id="placeHeader"  placeholder="<%= @intro_message %>">
+    <input name="intro_message_header" type="text" class="form-control" id="placeHeader"  placeholder="<%= @intro_message_header %>">
     <label for="placeLead">Intro Message Lead</label>
     <input name="intro_message_lead" type="text" class="form-control" id="placeLead"  placeholder="<%= @intro_message_lead %>">
     <label for="announcementArea">Announcements</label>
@@ -19,4 +21,24 @@
     <input name="youtube_id" type="text" class="form-control" id="youtubeLink">
   <button type="submit" class="btn btn-primary">Save Changes</button>
 </form>
+</div>
+</div>
+
+<div class='col-md-6'>
+<h2>Display:</h2>
+<h3><%= @place_name %></h3>
+<h4><%= @intro_message_header %></h4>
+<h4><%= @intro_message_lead %></h4>
+<h5>Announcements</h5>
+<ul>
+<% @announcements.each do |announcement| %>
+    <li>
+    <p><%= announcement %><p>
+    </li>
+<% end %>
+</ul>
+
+
+</div>
+</div>
 </div>
