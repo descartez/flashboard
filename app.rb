@@ -20,6 +20,7 @@ class App < Sinatra::Base
     @intro_message_header = @board_config['intro_message_header']
     @intro_message_lead = @board_config['intro_message_lead']
     @announcements = @board_config['announcements']
+    @password_string = @board_config['password_string']
   end
 
   #----------------------------------
