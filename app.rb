@@ -7,6 +7,10 @@ class App < Sinatra::Base
   set :bind, '0.0.0.0'
   set :port, 9393
 
+  def write_to_config
+    File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
+  end
+
   before do
     @ip_address = "#{Socket.ip_address_list[4].ip_address}::9393"
 
@@ -20,9 +24,7 @@ class App < Sinatra::Base
 
   get '/' do
     @board_config['reload'] = "false"
-
-    File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
-
+    write_to_config
     erb :index
   end
 
@@ -53,6 +55,10 @@ class App < Sinatra::Base
       f.write(file.read)
     end
 
+    @board_config['reload'] = "true"
+
+    write_to_config
+
     redirect '/upload'
   end
 
@@ -79,7 +85,7 @@ class App < Sinatra::Base
 
     @board_config['reload'] = "true"
 
-    File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
+    write_to_config
 
     redirect '/edit'
   end

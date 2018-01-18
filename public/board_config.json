@@ -1,1 +1,1 @@
-{"place_name":"Flashboard","youtube_id":"y1yFiotx3qk","intro_message_header":"Welcome!","announcements":["edit board","display","enjoy"],"intro_message_lead":"Go to '/edit' to edit this board. Go to '/upload' to upload your own logo.","reload":"false"}
+{"place_name":"Flashboard","youtube_id":"y1yFiotx3qk","intro_message_header":"Welcome!","announcements":["edit board","display","enjoy","page will refresh with changes in a short interval"],"intro_message_lead":"Please go to '/edit' to edit and '/upload' to upload your logo!","reload":"false"}
