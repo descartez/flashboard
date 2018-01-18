@@ -19,6 +19,10 @@ class App < Sinatra::Base
   end
 
   get '/' do
+    @board_config['reload'] = "false"
+
+    File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
+
     erb :index
   end
 
@@ -73,8 +77,10 @@ class App < Sinatra::Base
       announcement.sub(/\n/,"")
     end
 
+    @board_config['reload'] = "true"
+
     File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
 
-    redirect '/'
+    redirect '/edit'
   end
 end

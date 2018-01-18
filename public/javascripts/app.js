@@ -1,14 +1,13 @@
 var data;
 var request = $.getJSON('/board_config.json', function(response){
   data = response
-  console.log(data)
   return data
-  }).fail(function(response){
+}).fail(function(response){
   console.log('json not loaded')
 });
 
 function onYouTubeIframeAPIReady() {
-  console.log('loaded and launched youtube script')
+  console.log('loaded and launched youtube')
   var player;
   player = new YT.Player('youtube_video', {
     videoId: data.youtube_id,
@@ -32,5 +31,31 @@ function onYouTubeIframeAPIReady() {
       }
     }
   });
-}
-onYouTubeIframeAPIReady()
+};
+
+function checkReload() {
+  data;
+  request = $.getJSON('/board_config.json', function(response){
+    data = response
+    return data
+  }).fail(function(response){
+    console.log('json not loaded')
+  });
+
+  if (data.reload === "true") {
+    console.log('reloading!')
+    location.reload()
+  } else {
+    console.log('no need to reload')
+  }
+};
+
+function initTimer() {
+  setInterval(checkReload, 10000)
+};
+
+console.log('app.js loaded');
+
+initTimer();
+onYouTubeIframeAPIReady();
+
