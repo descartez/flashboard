@@ -13,7 +13,11 @@ class App < Sinatra::Base
   end
 
   before do
-    @ip_address = "#{Socket.ip_address_list[4].ip_address}:9393"
+    Socket.ip_address_list.each do |ip|
+      if ip.ip_address.match(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/)
+        @ip_address = "#{ip.ip_address}:9393"
+      end
+    end
 
     file = File.read('public/board_config.json')
     @board_config = JSON.parse(file)
