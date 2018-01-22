@@ -7,7 +7,7 @@ echo '----------------------------------------------------------------------'
 
 source ~/.rvm/scripts/rvm
 
-rvm use 2.2.3
+rvm use 2.4.1
 
 sleep 1s
 echo 'bundling...'

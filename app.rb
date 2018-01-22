@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra/base'
-require 'JSON'
+require 'json'
 require 'socket'
 
 
