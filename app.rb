@@ -12,7 +12,7 @@ class App < Sinatra::Base
   end
 
   before do
-    @ip_address = "#{Socket.ip_address_list[4].ip_address}::9393"
+    @ip_address = "#{Socket.ip_address_list[4].ip_address}:9393"
 
     file = File.read('public/board_config.json')
     @board_config = JSON.parse(file)
