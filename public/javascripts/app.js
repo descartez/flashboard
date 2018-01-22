@@ -51,7 +51,7 @@ function checkReload() {
 };
 
 function initTimer() {
-  setInterval(checkReload, 10000)
+  setInterval(checkReload, 5000)
 };
 
 console.log('app.js loaded');
