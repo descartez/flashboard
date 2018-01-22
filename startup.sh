@@ -5,8 +5,11 @@ echo 'Welcome to Flashboard by descartez!'
 echo 'This script should be run when you wish to start from a Raspberry Pi.'
 echo '----------------------------------------------------------------------'
 
-sleep 1s
+source ~/.rvm/scripts/rvm
 
+rvm use 2.2.3
+
+sleep 1s
 echo 'bundling...'
 bundle
 
