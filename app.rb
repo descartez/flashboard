@@ -2,11 +2,33 @@ require 'rubygems'
 require 'sinatra/base'
 require 'json'
 require 'socket'
+require 'redcarpet'
 
 
 class App < Sinatra::Base
   set :bind, '0.0.0.0'
   set :port, 9393
+
+  def markdown(text)
+        options = {
+      filter_html:     true,
+      hard_wrap:       true,
+      link_attributes: { rel: 'nofollow', target: "_blank" },
+      space_after_headers: true,
+      fenced_code_blocks: true
+    }
+
+    extensions = {
+      autolink:           true,
+      superscript:        true,
+      disable_indented_code_blocks: true
+    }
+
+    renderer = Redcarpet::Render::HTML.new(options)
+    markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+    markdown.render(text)
+  end
 
   def write_to_config
     File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
@@ -82,11 +104,7 @@ class App < Sinatra::Base
       @board_config['youtube_id'] = params[:youtube_id][/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/, 1].to_s
     end
 
-    @board_config['announcements'] = params[:announcements].split("-").reject {|element| element.empty? }
-    @board_config['announcements'].each do |announcement|
-      announcement.strip!
-      announcement.sub(/\n/,"")
-    end
+    @board_config['announcements'] = params[:announcements]
 
     @board_config['reload'] = "true"
 

@@ -15,12 +15,6 @@
     </div>
     <div class='col-md-6' id='announcements'>
       <h1>Announcements</h1>
-      <ul>
-        <% @announcements.each do |announcement| %>
-        <li>
-          <p><%= announcement %><p>
-          </li>
-          <% end %>
-        </ul>
+      <%= markdown(@announcements) %>
       </div>
     </div>
