@@ -1,17 +1,10 @@
-body {
-  padding: 15px;
-}
-
 #logo {
-  width: 250px;
+    height: auto;
+    width: auto;
+    max-width: 250px;
+    max-height: 250px;
 }
 
 #clock {
   font-size: 2em;
-}
-
-.jumbotron {
-  background-color: #eee0;
-  border: 1px solid grey;
-  border-radius: 25px;
 }

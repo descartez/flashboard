@@ -56,7 +56,7 @@ function startClock() {
     var hour = date.getHours();
     var hour12 = hour % 12;
     var hourString = hour12 === 0 ? '12' : hour12.toString();
-    var amPm = (hour < 12) ? 'am' : 'pm';
+    var amPm = (hour < 12) ? ' am' : ' pm';
     var minutes = date.getMinutes().toString();
     var minutesString = (minutes.length === 1) ? '0' + minutes : minutes;
     var seconds = date.getSeconds().toString();
