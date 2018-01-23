@@ -1,20 +1,26 @@
-<div class="row">
-  <div class="jumbotron jumbotron-fluid">
-    <div class='row'>
-      <img class='col-md-6' src="/images/logo">
-      <div class='col-md-6'>
-        <h1 class="display-3"><%= @intro_message_header %></h1>
-        <p class="lead"><%= @intro_message_lead %></p>
-      </div>
-    </div>
+<div class="columns">
+  <div class='column is-one-fifth'>
+    <img id="logo" src="/images/logo">
+    <div id="clock"></div>
   </div>
-
-  <div class="row">
-    <div class='col-md-6' id='assets'>
+  <div class='column'>
+    <h1 class='title'><%= @intro_message_header %></h1>
+    <p><%= @intro_message_lead %></p>
+  </div>
+  <div class='column box content' id='announcements'>
+    <h1 class="title">Announcements</h1>
+    <%= markdown(@announcements) %>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <div id='video'>
       <div id='youtube_video'></div>
     </div>
-    <div class='col-md-6' id='announcements'>
-      <h1>Announcements</h1>
-      <%= markdown(@announcements) %>
-      </div>
+  </div>
+  <div class="column">
+    <div id='gallery'>
+
     </div>
+  </div>
+</div>

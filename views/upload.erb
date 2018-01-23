@@ -1,9 +1,15 @@
-<p><a href="/edit">edit</a> / upload </p>
+<nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+  <ul>
+    <li class="is-active"><a href="#">Upload</a></li>
+    <li><a href="/edit">Edit</a></li>
+  </ul>
+</nav>
 <h2>Manage Uploads</h2>
+<div class="file">
 <form method='POST' action='/upload_logo' enctype="multipart/form-data">
-  <div class="form-group">
-    <label for="inputFile">Upload Logo</label>
-    <input type="file" class="form-control-file" id="inputFile" name='file'>
+    <label class='file-label'>Upload Logo</label>
+    <input type="file" class="file-input" name='file'>
     <input class='btn btn-default' type="submit" value="Upload Image">
-  </div>
+</div>
+
 </form>

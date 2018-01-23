@@ -1,18 +1,44 @@
-<p>edit / <a href="/upload">upload</a></p>
+<nav class="breadcrumb is-centered" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="/upload">Upload</a></li>
+    <li class="is-active"><a href="#">Edit</a></li>
+  </ul>
+</nav>
 <h2>Edit Board</h2>
-<div class="form-group">
 <form method="POST" action="/update">
-    <label for="placeName">Place Name</label>
-    <input name="place_name" type="text" class="form-control" id="placeName"  placeholder="<%= @place_name %>">
-    <label for="placeHeader">Intro Message Header</label>
-    <input name="intro_message_header" type="text" class="form-control" id="placeHeader"  placeholder="<%= @intro_message %>">
-    <label for="placeLead">Intro Message Lead</label>
-    <input name="intro_message_lead" type="text" class="form-control" id="placeLead"  placeholder="<%= @intro_message_lead %>">
-    <label for="announcementArea">Announcements</label>
-    <small id="announcementArea" class="form-text text-muted">Please separate announcements with a dash and a new line.</small>
-    <textarea name="announcements" class="form-control" id="announcementArea" rows="4"><%= @announcements %></textarea>
-    <label for="youtubeLink">Youtube Link</label>
-    <input name="youtube_id" type="text" class="form-control" id="youtubeLink">
-  <button type="submit" class="btn btn-primary">Save Changes</button>
+    <div class="feild">
+        <label class="label">Place Name</label>
+        <div class="control">
+        <input class="input" name="place_name" type="text" class="form-control" id="placeName"  placeholder="<%= @place_name %>">
+    </div>
+    <div class="feild">
+        <label class="label" for="placeHeader">Intro Message Header</label>
+        <div class="control">
+        <input class="input" name="intro_message_header" type="text" class="form-control" id="placeHeader"  placeholder="<%= @intro_message_header %>">
+    </div>
+    </div>
+    <div class="feild">
+        <label class="label" for="placeLead">Intro Message Lead</label>
+        <div class="control">
+        <input class="input" name="intro_message_lead" type="text" class="form-control" id="placeLead"  placeholder="<%= @intro_message_lead %>">
+    </div>
+
+    </div>
+    <div class="feild">
+        <label class="label" for="announcementArea">Announcements</label>
+        <small id="announcementArea" class="form-text text-muted">Please separate announcements with a dash and a new line. The announcements follow <a href="">markdown</a> rules.</small>
+        <div class="control">
+
+        <textarea class="textarea" name="announcements"id="announcementArea" rows="4"><%= @announcements %></textarea>
+    </div>
+
+    </div>
+    <div class="feild">
+        <label class="label" for="youtubeLink">Youtube Link</label>
+    </div>
+    <div class="control">
+    <input class="input" name="youtube_id" type="text" class="form-control" id="youtubeLink">
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    </div>
+
 </form>
-</div>

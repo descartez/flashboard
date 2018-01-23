@@ -50,6 +50,22 @@ function checkReload() {
   }
 };
 
+function startClock() {
+  setInterval(function() {
+    var date = new Date();
+    var hour = date.getHours();
+    var hour12 = hour % 12;
+    var hourString = hour12 === 0 ? '12' : hour12.toString();
+    var amPm = (hour < 12) ? 'am' : 'pm';
+    var minutes = date.getMinutes().toString();
+    var minutesString = (minutes.length === 1) ? '0' + minutes : minutes;
+    var seconds = date.getSeconds().toString();
+    var secondsString = (seconds.length === 1) ? '0' + seconds : seconds;
+    var time = hourString + ':' + minutesString + ':' + secondsString + amPm;
+    $('#clock').html(time);
+  }, 1000);
+}
+
 function initTimer() {
   setInterval(checkReload, 5000)
 };
@@ -57,5 +73,6 @@ function initTimer() {
 console.log('app.js loaded');
 
 initTimer();
+startClock();
 onYouTubeIframeAPIReady();
 
