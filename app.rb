@@ -87,7 +87,22 @@ class App < Sinatra::Base
     extension = params[:file][:filename][/[^.]+$/]
     file = params[:file][:tempfile]
 
-    File.open("./public/images/logo", 'wb') do |f|
+    File.open("./public/uploads/images/logo", 'wb') do |f|
+      f.write(file.read)
+    end
+
+    @board_config['reload'] = "true"
+
+    write_to_config
+
+    redirect '/upload'
+  end
+
+  post '/upload_video' do
+    extension = params[:file][:filename][/[^.]+$/]
+    file = params[:file][:tempfile]
+
+    File.open("./public/uploads/videos/video", 'wb') do |f|
       f.write(file.read)
     end
 
