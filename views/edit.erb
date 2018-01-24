@@ -26,7 +26,7 @@
     </div>
     <div class="feild">
         <label class="label" for="announcementArea">Announcements</label>
-        <small id="announcementArea" class="form-text text-muted">Please separate announcements with a dash and a new line. The announcements follow <a href="">markdown</a> rules.</small>
+        <small>Please separate announcements with a dash and a new line. The announcements follow <a href="">markdown</a> rules.</small>
         <div class="control">
 
         <textarea class="textarea" name="announcements"id="announcementArea" rows="4"><%= @announcements %></textarea>
@@ -38,7 +38,18 @@
     </div>
     <div class="control">
     <input class="input" name="youtube_id" type="text" class="form-control" id="youtubeLink">
-    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <div class="field">
+        <label class="label">Choose Video Source</label>
+        <small>To upload a local video, go to <a href="/upload">upload</a>.</small>
+        <div class="control">
+        <div class="select">
+            <select name="video_source">
+                <option value="youtube">Youtube</option>
+                <option value="local">Local Video</option>
+            </select>
+        </div>
+        </div>
     </div>
-
+    <button type="submit" class="button">Save Changes</button>
+    </div>
 </form>

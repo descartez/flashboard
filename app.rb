@@ -113,6 +113,12 @@ class App < Sinatra::Base
       @board_config['youtube_id'] = params[:youtube_id][/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/, 1].to_s
     end
 
+    if params[:video_source] == "youtube"
+      @board_config['local_video'] = "false"
+    elsif params[:video_source] == "local"
+      @board_config['local_video'] = "true"
+    end
+
     @board_config['announcements'] = params[:announcements]
 
     @board_config['reload'] = "true"
