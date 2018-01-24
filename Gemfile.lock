@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    json (2.1.0)
     mustermann (1.0.1)
     rack (2.0.3)
     rack-protection (2.0.0)
@@ -20,7 +19,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  json
   redcarpet
   shotgun
   sinatra
