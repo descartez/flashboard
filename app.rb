@@ -34,6 +34,14 @@ class App < Sinatra::Base
     File.open('public/board_config.json', 'w') {|f| f.write @board_config.to_json }
   end
 
+  def to_boolean(obj)
+    if obj == "true"
+      true
+    else
+      false
+    end
+  end
+
   before do
     Socket.ip_address_list.each do |ip|
       if ip.ip_address.match(/\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/)
@@ -47,6 +55,7 @@ class App < Sinatra::Base
     @intro_message_header = @board_config['intro_message_header']
     @intro_message_lead = @board_config['intro_message_lead']
     @announcements = @board_config['announcements']
+    @local_video = to_boolean(@board_config['local_video'])
   end
 
   get '/' do
