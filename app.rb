@@ -1,5 +1,12 @@
 require 'rubygems'
+
+# sinatra and database
 require 'sinatra/base'
+require 'sinatra/activerecord'
+require './config/environments'
+require './models/image'
+
+
 require 'json'
 require 'socket'
 require 'redcarpet'
