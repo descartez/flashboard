@@ -2,6 +2,7 @@ require './uploader/images_uploader'
 
 class Image < ActiveRecord::Base
   mount_uploader :image, ImagesUploader
+  serialize :image, JSON
 
   def switch_visibility
     if self.visible == true

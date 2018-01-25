@@ -98,12 +98,12 @@ class App < Sinatra::Base
     redirect '/upload'
   end
 
-  get '/image/:id' do
+  get '/images/:id' do
     image = Image.find(params[:id])
     p image.image.url
   end
 
-  put '/image/:id' do
+  put '/images/:id' do
     image = Image.find(params[:id])
     image.switch_visibility
   end
