@@ -3,8 +3,9 @@ require 'rubygems'
 # sinatra and database
 require 'sinatra/base'
 require 'sinatra/activerecord'
-require './config/environments'
-require './models/image'
+require 'sqlite3'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
 
 
 require 'json'
@@ -12,7 +13,13 @@ require 'socket'
 require 'redcarpet'
 
 
+CarrierWave.configure do |config|
+  config.root = File.dirname(__FILE__) + "/public"
+end
+
 class App < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
+
   set :bind, '0.0.0.0'
   set :port, 9393
 
@@ -80,12 +87,12 @@ class App < Sinatra::Base
   end
 
   post '/upload' do
-    @filename = params[:file][:filename]
-    file = params[:file][:tempfile]
+      img = Image.new
+      img.file    = params[:file]
+      img.visible = true
 
-    File.open("./public/images/#{@filename}", 'wb') do |f|
-      f.write(file.read)
-    end
+      #Save
+      img.save!
 
     redirect '/upload'
   end
