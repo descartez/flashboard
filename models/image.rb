@@ -12,4 +12,8 @@ class Image < ActiveRecord::Base
     end
     self.save!
   end
+
+  def self.visible_images
+    self.where(visible: true)
+  end
 end
