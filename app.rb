@@ -88,15 +88,26 @@ class App < Sinatra::Base
   end
 
   post '/upload' do
-      img = Image.new
-      img.file = params[:file]
-      img.visible = true
+    img = Image.new
+    img.image = params[:file]
+    img.visible = true
 
-      #Save
-      img.save!
+    #Save
+    img.save!
 
     redirect '/upload'
   end
+
+  get '/image/:id' do
+    image = Image.find(params[:id])
+    p image.image.url
+  end
+
+  put '/image/:id' do
+    image = Image.find(params[:id])
+    image.switch_visibility
+  end
+
 
   post '/upload_logo' do
     extension = params[:file][:filename][/[^.]+$/]
