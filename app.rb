@@ -6,6 +6,7 @@ require 'sinatra/activerecord'
 require 'sqlite3'
 require 'carrierwave'
 require 'carrierwave/orm/activerecord'
+require './models/image'
 
 
 require 'json'
@@ -88,7 +89,7 @@ class App < Sinatra::Base
 
   post '/upload' do
       img = Image.new
-      img.file    = params[:file]
+      img.file = params[:file]
       img.visible = true
 
       #Save
