@@ -4,6 +4,8 @@ class Image < ActiveRecord::Base
   mount_uploader :image, ImagesUploader
   serialize :image, JSON
 
+  validates :image, presence: true
+
   def switch_visibility
     if self.visible == true
       self.visible = false

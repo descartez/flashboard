@@ -13,7 +13,6 @@ require 'json'
 require 'socket'
 require 'redcarpet'
 
-
 CarrierWave.configure do |config|
   config.root = File.dirname(__FILE__) + "/public"
 end
@@ -74,6 +73,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
+    @images = Image.visible_images
     @board_config['reload'] = "false"
     write_to_config
     erb :index
@@ -88,6 +88,7 @@ class App < Sinatra::Base
   end
 
   post '/upload' do
+    p params
     img = Image.new
     img.image = params[:file]
     img.visible = true
@@ -95,7 +96,12 @@ class App < Sinatra::Base
     #Save
     img.save!
 
-    redirect '/upload'
+    redirect '/images'
+  end
+
+  get '/images' do
+    @images = Image.visible_images
+    erb :gallery_manager
   end
 
   get '/images/:id' do
