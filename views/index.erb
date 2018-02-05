@@ -24,16 +24,20 @@
       <% if @local_video %>
       <video width="560" height="316" controls muted loop >
         <source src="uploads/video/local_video" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <% else %>
-          <div id='youtube_video'></div>
-      <% end %>
-      </div>
-      </div>
-      <div class="column">
-        <div id='gallery'>
-
-        </div>
+          Your browser does not support the video tag.
+        </video>
+        <% else %>
+        <div id='youtube_video'></div>
+        <% end %>
       </div>
     </div>
+    <div class="column">
+      <div id="slideshow">
+        <% @images.each do |img| %>
+        <div>
+         <img src="<%= img.image.url %>">
+       </div>
+       <% end %>
+     </div>
+   </div>
+ </div>
