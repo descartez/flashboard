@@ -100,7 +100,8 @@ class App < Sinatra::Base
   end
 
   get '/images' do
-    @images = Image.visible_images
+    @visible_images = Image.visible_images
+    @invisible_images = Image.invisible_images
     erb :gallery_manager
   end
 

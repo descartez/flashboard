@@ -7,53 +7,61 @@
   </ul>
 </nav>
 <h1 class="title">Manage Uploads</h1>
-<div class="file">
-  <form method='POST' action='/upload_logo' enctype="multipart/form-data">
-    <label class='file-label'>
-      <span class="file-cta">
-        <span class="file-icon">
-          <i class="fas fa-upload"></i>
-        </span>
-        <span class="file-label">
-          Choose Logo File
-        </span>
-      </span>
-      <input type="file" class="file-input" name='file'>
-    </label>
-    <input class='button' type="submit" value="Upload Image">
-  </form>
-</div>
+<div class="columns">
+  <div class="column">
+    <div class="file">
+      <form method='POST' action='/upload_logo' enctype="multipart/form-data">
+        <label class='file-label'>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose Logo File
+            </span>
+          </span>
+          <input type="file" class="file-input" name='file'>
+        </label>
+        <input class='button' type="submit" value="Upload Image">
+      </form>
+    </div>
+  </div>
 
-<div class="file">
-  <form method='POST' action='/upload_video' enctype="multipart/form-data">
-    <label class='file-label'>
-      <span class="file-cta">
-        <span class="file-icon">
-          <i class="fas fa-upload"></i>
-        </span>
-        <span class="file-label">
-          Choose Video File
-        </span>
-      </span>
-      <input type="file" class="file-input" name='file'>
-    </label>
-    <input class='button' type="submit" value="Upload Video">
-  </form>
-</div>
+  <div class="column">
+    <div class="file">
+      <form method='POST' action='/upload_video' enctype="multipart/form-data">
+        <label class='file-label'>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose Video File
+            </span>
+          </span>
+          <input type="file" class="file-input" name='file'>
+        </label>
+        <input class='button' type="submit" value="Upload Video">
+      </form>
+    </div>
+  </div>
 
-<div class="file">
-  <form method='POST' action='/upload' enctype="multipart/form-data">
-    <label class='file-label'>
-      <span class="file-cta">
-        <span class="file-icon">
-          <i class="fas fa-upload"></i>
-        </span>
-        <span class="file-label">
-          Choose Image File
-        </span>
-      </span>
-      <input type="file" class="file-input" name='file'>
-    </label>
-    <input class='button' type="submit" value="Upload Image">
-  </form>
+  <div class="column">
+    <div class="file">
+      <form method='POST' action='/upload' enctype="multipart/form-data">
+        <label class='file-label'>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose Image File
+            </span>
+          </span>
+          <input type="file" class="file-input" name='file'>
+        </label>
+        <input class='button' type="submit" value="Upload Image">
+      </form>
+    </div>
+  </div>
 </div>

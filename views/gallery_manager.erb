@@ -3,28 +3,55 @@
     <li><a href="/upload">Upload</a></li>
     <li><a href="/edit">Edit</a></li>
     <li class="is-active"><a href="#">Gallery</a></li>
-
   </ul>
 </nav>
 <h1 class="title">Manage Gallery</h1>
-<div class="file">
-  <form method='POST' action='/upload' enctype="multipart/form-data">
-    <label class='file-label'>
-      <span class="file-cta">
-        <span class="file-icon">
-          <i class="fas fa-upload"></i>
-        </span>
-        <span class="file-label">
-          Choose Image File
-        </span>
-      </span>
-      <input type="file" class="file-input" name='file'>
-    </label>
-    <input class='button' type="submit" value="Upload Image">
-  </form>
+<div class="columns">
+  <div class="column">
+    <div class="file">
+      <form method='POST' action='/upload' enctype="multipart/form-data">
+        <label class='file-label'>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose Image File
+            </span>
+          </span>
+          <input type="file" class="file-input" name='file'>
+        </label>
+        <input class='button' type="submit" value="Upload Image">
+      </form>
+    </div>
+  </div>
 </div>
-<div>
-  <% @images.each_with_index do |image| %>
-    <img src="<%= image.image.url %>">
-  <% end %>
+<h1>Images Showing</h1>
+<div class="columns">
+  <div>
+    <% @visible_images.each_with_index do |image| %>
+    <div class="column">
+      <article class="media">
+        <figure class="media-left">
+          <img class="image gallery-image" src="<%= image.image.url %>">
+        </figure>
+      </article>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<h1>Images Not Showing</h1>
+<div class="columns">
+  <div>
+    <% @invisible_images.each_with_index do |image| %>
+    <div class="column">
+      <article class="media">
+        <figure class="media-left">
+          <img class="image gallery-image" src="<%= image.image.url %>">
+        </figure>
+      </article>
+    </div>
+    <% end %>
+  </div>
 </div>

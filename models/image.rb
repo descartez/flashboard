@@ -18,4 +18,8 @@ class Image < ActiveRecord::Base
   def self.visible_images
     self.where(visible: true)
   end
+
+  def self.invisible_images
+    self.where(visible: false)
+  end
 end
