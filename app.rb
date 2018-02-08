@@ -22,6 +22,7 @@ class App < Sinatra::Base
 
   set :bind, '0.0.0.0'
   set :port, 9393
+  set :method_override, true
 
   def markdown(text)
         options = {
@@ -105,14 +106,24 @@ class App < Sinatra::Base
     erb :gallery_manager
   end
 
-  get '/images/:id' do
-    image = Image.find(params[:id])
-    p image.image.url
-  end
-
   put '/images/:id' do
     image = Image.find(params[:id])
     image.switch_visibility
+
+    @board_config['reload'] = "true"
+    write_to_config
+
+    redirect '/images'
+  end
+
+  delete '/images/:id' do
+    image = Image.find(params[:id])
+    image.destroy!
+
+    @board_config['reload'] = "true"
+    write_to_config
+
+    redirect '/images'
   end
 
 

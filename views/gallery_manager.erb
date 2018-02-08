@@ -29,41 +29,53 @@
 
 <h1>Images Showing</h1>
 <div class="columns">
-    <% @visible_images.each_with_index do |image| %>
-    <div class="column">
-      <article class="media">
-        <figure class="media-left">
-          <img class="image gallery-image" src="<%= image.image.url %>">
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p><%= image.image.file.filename %></p>
-            <button class="button">Remove From Gallery</button>
-            <button class="button">Delete</button>
-          </div>
-          </div>
-        </article>
+  <% @visible_images.each_with_index do |image| %>
+  <div class="column">
+    <article class="media">
+      <figure class="media-left">
+        <img class="image gallery-image" src="<%= image.image.url %>">
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p><%= image.image.file.filename %></p>
+          <form action="/images/<%= image.id %>" method="post">
+            <input name="_method" type="hidden" value="put" />
+            <button class="button is-warning">Remove From Gallery</button>
+          </form>
+          <form action="/images/<%= image.id %>" method="post">
+            <input name="_method" type="hidden" value="delete" />
+            <button class="button is-danger">Delete</button>
+          </form>
+        </div>
       </div>
-    <% end %>
+    </article>
   </div>
+  <% end %>
+</div>
 </div>
 
 <h1>Images Not Showing</h1>
 <div class="columns">
-    <% @invisible_images.each_with_index do |image| %>
-    <div class="column">
-      <article class="media">
-        <figure class="media-left">
-          <img class="image gallery-image" src="<%= image.image.url %>">
-        </figure>
-        <div class="media-content">
-          <div class="content">
-            <p><%= image.image.file.filename %></p>
-            <button class="button">Add to Gallery</button>
-            <button class="button">Delete</button>
-          </div>
-        </article>
-      </div>
+  <% @invisible_images.each_with_index do |image| %>
+  <div class="column">
+    <article class="media">
+      <figure class="media-left">
+        <img class="image gallery-image" src="<%= image.image.url %>">
+      </figure>
+      <div class="media-content">
+        <div class="content">
+          <p><%= image.image.file.filename %></p>
+                    <form action="/images/<%= image.id %>" method="post">
+            <input name="_method" type="hidden" value="put" />
+            <button class="button is-warning">Add To Gallery</button>
+          </form>
+          <form action="/images/<%= image.id %>" method="post">
+            <input name="_method" type="hidden" value="delete" />
+            <button class="button is-danger">Delete</button>
+          </form>
+        </div>
+      </article>
+    </div>
     <% end %>
   </div>
 </div>
