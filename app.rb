@@ -70,6 +70,7 @@ class App < Sinatra::Base
     @intro_message_header = @board_config['intro_message_header']
     @intro_message_lead = @board_config['intro_message_lead']
     @announcements = @board_config['announcements']
+    @footer = @board_config['footer']
     @local_video = to_boolean(@board_config['local_video'])
   end
 
@@ -179,6 +180,10 @@ class App < Sinatra::Base
     end
 
     @board_config['announcements'] = params[:announcements]
+
+    unless params[:footer].strip.empty?
+      @board_config['footer'] = params[:footer]
+    end
 
     @board_config['reload'] = "true"
 
