@@ -98,6 +98,9 @@ class App < Sinatra::Base
     #Save
     img.save!
 
+    @board_config['reload'] = "true"
+    write_to_config
+
     redirect '/images'
   end
 
@@ -137,7 +140,6 @@ class App < Sinatra::Base
     end
 
     @board_config['reload'] = "true"
-
     write_to_config
 
     redirect '/upload'
@@ -152,7 +154,6 @@ class App < Sinatra::Base
     end
 
     @board_config['reload'] = "true"
-
     write_to_config
 
     redirect '/upload'
@@ -186,7 +187,6 @@ class App < Sinatra::Base
     end
 
     @board_config['reload'] = "true"
-
     write_to_config
 
     redirect '/edit'

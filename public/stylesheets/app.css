@@ -40,3 +40,13 @@ body {
     color: white;
     background-color: #0d4c82;
 }
+
+.footer > .container {
+    margin-top: -30px
+}
+
+.gallery-box {
+    display: block;
+    float: left;
+    padding-left: 15px;
+}
