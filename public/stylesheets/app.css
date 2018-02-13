@@ -1,3 +1,7 @@
+body {
+    margin-top: -30px
+}
+
 #logo {
     height: auto;
     width: auto;
@@ -18,10 +22,10 @@
     position: absolute;
     height: auto;
     width: auto;
-    min-width: 250px;
-    min-height:200px ;
+    min-width: 500px;
+    min-height: 315px ;
     max-width: 500px;
-    max-height: 300px;
+    max-height: 315px;
 }
 
 .gallery-image {
@@ -29,4 +33,10 @@
     width: auto;
     max-width: 125px;
     max-height: 125px;
+}
+
+.footer {
+    text-align: center;
+    color: white;
+    background-color: #0d4c82;
 }
