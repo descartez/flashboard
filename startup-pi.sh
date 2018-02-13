@@ -1,8 +1,8 @@
-#!/bin/bash
+startup-pi.sh#!/bin/bash
 
 echo '----------------------------------------------------------------------'
 echo 'Welcome to Flashboard by descartez!'
-echo 'This script should be run when you wish to start from terminal in linux.'
+echo 'This script should be run when you wish to start from a Raspberry Pi.'
 echo '----------------------------------------------------------------------'
 
 source ~/.rvm/scripts/rvm
@@ -16,4 +16,4 @@ bundle
 sleep 1s
 
 echo 'starting...'
-bundle exec shotgun -o 0.0.0.0 -p 9393
+bundle exec shotgun -o 0.0.0.0 -p 9393 & (sleep 15 && DISPLAY=:0 chromium-browser -kiosk)
