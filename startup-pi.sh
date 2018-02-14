@@ -16,4 +16,4 @@ bundle
 sleep 1s
 
 echo 'starting...'
-bundle exec shotgun -o 0.0.0.0 -p 9393 & (sleep 15 && DISPLAY=:0 chromium-browser -kiosk localhost:9393)
+bundle exec shotgun -o 0.0.0.0 -p 9393 & (sleep 15 && DISPLAY=:0 chromium-browser app=http://localhost:9393 -kiosk )
