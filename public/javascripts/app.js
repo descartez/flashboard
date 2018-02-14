@@ -53,6 +53,12 @@ function checkReload() {
 function startClock() {
   setInterval(function() {
     var date = new Date();
+    var month = date.getMonth().toString();
+    var day = date.getDate().toString();
+    var year = date.getFullYear().toString();
+    var fulldate = month + '/' + day + '/' + year
+
+
     var hour = date.getHours();
     var hour12 = hour % 12;
     var hourString = hour12 === 0 ? '12' : hour12.toString();
@@ -62,7 +68,7 @@ function startClock() {
     var seconds = date.getSeconds().toString();
     var secondsString = (seconds.length === 1) ? '0' + seconds : seconds;
     var time = hourString + ':' + minutesString + ':' + secondsString + amPm;
-    $('#clock').html(time);
+    $('#clock').html(time + " on " + fulldate);
   }, 1000);
 }
 
