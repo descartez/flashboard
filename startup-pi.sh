@@ -1,4 +1,4 @@
-startup-pi.sh#!/bin/bash
+#!/bin/bash
 
 echo '----------------------------------------------------------------------'
 echo 'Welcome to Flashboard by descartez!'
